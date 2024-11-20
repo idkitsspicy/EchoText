@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EchoText - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header section with welcome message and logout button -->
+        <header>
+            <h1>Welcome, {{ session['username'] }}!</h1>
+            <button onclick="window.location.href='{{ url_for('logout') }}'" style="font-size: medium; background-color: #dc3545; color: white; border: none; padding: 8px 12px; cursor: pointer;">
+                Logout
+            </button>
+        </header>
+
+        <!-- File upload and recording options -->
+        <div class="upload-record">
+            <!-- Upload Section -->
+            <div class="upload-option">
+                <img src="https://cdn-icons-png.flaticon.com/512/976/976598.png" alt="Upload Icon" style="width: 100px; height: 100px;">
+                <button id="uploadButton" style="font-size: large; background-color: #007bff; color: white; border: none; padding: 10px 15px; cursor: pointer;">
+                    + Upload
+                </button>
+                <input type="file" id="fileInput" style="display: none;" />
+            </div>
+
+            <!-- Recording Section -->
+            <div class="record-option">
+                <img src="https://cdn-icons-png.flaticon.com/512/26/26312.png" alt="Record Icon" style="width: 100px; height: 100px;">
+                <button id="recordButtonText" style="font-size: large; background-color: #28a745; color: white; border: none; padding: 10px 15px; cursor: pointer;">
+                    Record
+                </button>
+            </div>
+        </div>
+
+        <!-- Output section for transcription and summary results -->
+        <div class="output">
+            <h3>Transcription</h3>
+            <p id="transcriptionText">Your transcription will appear here...</p>
+
+            <h3>Summary</h3>
+            <p id="summaryText">Your summary will appear here...</p>
+        </div>
+    </div>
+
+    <!-- Include script.js for client-side functionality -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

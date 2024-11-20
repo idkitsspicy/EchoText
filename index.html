@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EchoText - Upload and Record</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Display login/signup buttons if the user is not logged in -->
+        {% if 'username' not in session %}
+            <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Welcome Icon" class="welcome-icon">
+            <h1>Welcome to EchoText</h1>
+            <p>Please login or sign up to start using our transcription and summarization services.</p>
+            
+            <button onclick="redirectTo('{{ url_for('login')}}')" class="login-button">
+                Login
+            </button>
+            <button onclick="redirectTo('{{ url_for('signup')}}')" class="signup-button">
+                Signup
+            </button>
+        
+        {% else %}
+            <!-- Redirect to dashboard if the user is logged in -->
+            <script src="{{ url_for('static', filename='redirect.js') }}"></script>
+        {% endif %}
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
